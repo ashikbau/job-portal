@@ -3,9 +3,13 @@ import signinLottieData from "../../assets/lottie/signin.json"
 import { useContext } from "react";
 import AuthContex from "../../contex/AuthContex/AuthContex";
 import SocialLogIn from "../shared/SocialLogIn";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-    const {signInUser,signInWithGoogle} = useContext(AuthContex)
+    const {signInUser,signInWithGoogle} = useContext(AuthContex);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state || "/";
 
     const handleSignIn =(e)=>{
         e.preventDefault();
@@ -17,9 +21,10 @@ const SignIn = () => {
         signInUser(email,password)
         .then(result=>{
             const user =result.user;
-            console.log(user)
+            // console.log(user)
             alert("user login sucessfully")
             form.reset();
+            navigate(from);
         })
          .catch((error) => {
     const errorCode = error.code;
