@@ -12,6 +12,8 @@ const MyApplications = () => {
 
         })
     },[user.email])
+
+ 
     return (
         <div>
             <h2>Here are my applications {jobs.length}</h2>
