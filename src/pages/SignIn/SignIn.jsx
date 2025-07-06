@@ -20,11 +20,11 @@ const SignIn = () => {
 
         signInUser(email,password)
         .then(result=>{
-            const user =result.user;
+           const user = { email: result.user.email }
             // console.log(user)
             alert("user login sucessfully")
             form.reset();
-            navigate(from);
+            // navigate(from);
         })
          .catch((error) => {
     const errorCode = error.code;
